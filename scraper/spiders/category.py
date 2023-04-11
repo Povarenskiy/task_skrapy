@@ -6,7 +6,9 @@ class CategorySpider(scrapy.Spider):
 
     def __init__(self, *args, **kwargs): 
         super().__init__(*args, **kwargs) 
-        self.start_urls = kwargs.get('start_url').split(',') or ['https://krasn.russcvet.ru/catalog/enamels/'] 
+
+        urls = kwargs.get('start_url')
+        self.start_urls = urls.split(',') if urls else ['https://krasn.russcvet.ru/catalog/enamels/'] 
 
 
     def parse(self, response, **kwargs):
